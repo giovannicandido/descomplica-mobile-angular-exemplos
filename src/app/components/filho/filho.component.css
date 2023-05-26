@@ -1,0 +1,8 @@
+:host {
+    display: block;
+}
+
+a {
+    color: blue;
+    cursor: pointer;
+}

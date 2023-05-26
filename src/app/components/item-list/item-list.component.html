@@ -1,0 +1,9 @@
+<h1>Lista normal</h1>
+<ul>
+    <li *ngFor="let item of itemList">{{ item }}  - <button (click)="remove(item)">Remover</button></li>
+</ul>
+
+<h1>Lista com observable</h1>
+<ul>
+    <li *ngFor="let item of itemListObservable | async">{{ item }}  - <button (click)="removeObservable(item)">Remover</button></li>
+</ul>
