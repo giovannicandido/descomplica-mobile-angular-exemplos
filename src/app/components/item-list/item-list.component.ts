@@ -8,12 +8,13 @@ import { ItemService } from 'src/app/services/item.service';
   styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent {
-  itemList: string[];
-  itemListObservable: Observable<string[]>
+  itemList: string[] = [];
+  
+  itemObservable: Observable<string[]>
 
   constructor(private itemService: ItemService) {
-    this.itemList = this.itemService.getItemList();
-    this.itemListObservable = this.itemService.getItemsObservable();
+    this.itemList = itemService.getItemList()
+    this.itemObservable = itemService.getItemsObservable()
   }
 
   remove(item: string) {

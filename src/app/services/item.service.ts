@@ -7,23 +7,25 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 export class ItemService {
 
   private itemList: string[] = [];
-  private itemListObservableSubject: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([])
+  
+  private itemObservableSubject: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([])
 
   getItemsObservable(): Observable<string[]> {
-    return this.itemListObservableSubject.asObservable();
+    //return this.itemListObservableSubject.asObservable();
+    return this.itemObservableSubject.asObservable()
   }
 
   addItemObservable(item: string) {
-    let current = this.itemListObservableSubject.getValue()
-    const newItems = [...current, item ]
-    this.itemListObservableSubject.next(newItems)
+    const value = this.itemObservableSubject.getValue();
+    value.push(item)
+    this.itemObservableSubject.next(value);
   }
 
   removeObservable(item: string) {
-    let current = this.itemListObservableSubject.getValue()
-    const index = current.indexOf(item)
-    current.splice(index, 1)
-    this.itemListObservableSubject.next(current)
+    const value = this.itemObservableSubject.getValue();
+    const index = value.indexOf(item);
+    value.splice(index, 1)
+    this.itemObservableSubject.next(value);
   }
 
   addItem(item: string) {

@@ -7,8 +7,8 @@ import { FilhoComponent } from '../filho/filho.component';
   styleUrls: ['./pai.component.css']
 })
 export class PaiComponent {
-  start = 0
-  end = 10
+  start = 5
+  end = 8
 
   @ViewChild("filho")
   filho!: FilhoComponent
@@ -25,5 +25,10 @@ export class PaiComponent {
 
   reset() {
     this.filho.reset()
+  }
+
+  mostrarSelecionado(numero: number) {
+    console.log('numero selecionado ' + numero)
+    this.selecionado = numero
   }
 }

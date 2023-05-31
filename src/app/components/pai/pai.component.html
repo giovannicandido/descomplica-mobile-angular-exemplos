@@ -7,4 +7,4 @@
 
 <p>Numero selecionado: {{selecionado}}</p>
 
-<app-filho #filho [start]="start" [end]="end" (onSelected)="selecionado = $event"></app-filho>
+<app-filho #filho [start]="start" [end]="end" (numberSelected)="mostrarSelecionado($event)" ></app-filho>

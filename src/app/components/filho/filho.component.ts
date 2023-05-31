@@ -7,24 +7,25 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 })
 export class FilhoComponent implements OnInit, OnChanges{
   
+  
   @Input()
   start = 0
-
   @Input()
   end = 10
 
   @Output()
-  onSelected = new EventEmitter<number>()
+  numberSelected = new EventEmitter() 
+
+  numeros: number[] = []
 
   integers: number [] = []
 
-  ngOnInit(): void {
-    this.makeIntegers()
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    const start  = changes['start']?.currentValue
+  ngOnChanges(changes: SimpleChanges): void {
+    const start = changes['start']?.currentValue
     const end = changes['end']?.currentValue
+    console.log('ngOnChanges')
+    console.log(start)
+    console.log(end)
     if(start) {
       this.start = start
     }
@@ -32,24 +33,32 @@ export class FilhoComponent implements OnInit, OnChanges{
     if(end) {
       this.end = end
     }
-    this.makeIntegers()
+    //if(start && end) {
+     
+      this.createNumeros()
+    //}
   }
 
-  makeIntegers() {
-    this.integers = []
-    for(let i = this.start; i <= this.end; i++) {
-      this.integers.push(i)
+  ngOnInit(): void {
+    this.createNumeros()
+  }
+
+  createNumeros() {
+    this.numeros = []
+    for(let i = this.start;i <= this.end; i++) {
+      this.numeros.push(i);
     }
   }
 
-  selectedNumber(n: number) {
-    this.onSelected.next(n)
+  selecionarNumero(numero: number) {
+    this.numberSelected.next(numero)
   }
 
   reset() {
     this.start = 0
     this.end = 10
-    this.makeIntegers()
+    this.createNumeros()
   }
+ 
 
 }

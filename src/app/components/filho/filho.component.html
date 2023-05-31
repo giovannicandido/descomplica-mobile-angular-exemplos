@@ -1,5 +1,5 @@
 <p>Filho</p>
 
-<p>
-    <a (click)="selectedNumber(i)" *ngFor="let i of integers"> {{i}} </a>
+<p *ngFor="let i of numeros">
+    <a (click)="selecionarNumero(i)" >{{i}}</a> <br />
 </p>
